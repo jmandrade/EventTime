@@ -1,10 +1,16 @@
 <?php
 
-$day = $_POST['day'];
-$month = $_POST['month'];
-$year = $_POST['year']; 
-$hour = $_POST['hour']; 
-$minute = $_POST['minute']; 
+$datetime=$_POST['datetime'];
+
+list($day, $month, $year, $hour, $minute) = explode("/", $datetime); 
+
+$day = (int)$day;
+$month = (int)$month;
+$year = (int)$year;
+$hour = (int)$hour;
+$minute = (int)$minute;
+
+$month = $month -1;
 
 $result = mktime($hour, $minute, 0, $month, $day, $year);
 
@@ -26,11 +32,8 @@ $result = mktime($hour, $minute, 0, $month, $day, $year);
     <td>Copiar y pegar el código de abajo en la <strong>fuente</strong> del artículo.</td>
   </tr>
   <tr>
-    <td><textarea name="resultado" cols="80" rows="3" readonly="readonly"><div style="text-align: center;"><iframe frameborder="0" height="55" width="400" src="<?php echo 'http://ext.weblogsinc.com/engadget/es/fecha.php?q='.$result; ?>">Tu navegador no soporta iframes</iframe></div></textarea></td>
+    <td><textarea name="resultado" cols="80" rows="3" readonly="readonly"><div style="text-align: center;"><iframe frameborder="0" height="70" width="400" src="<?php echo 'http://ext.weblogsinc.com/engadget/es/fecha.php?q='.$result; ?>">Tu navegador no soporta iframes</iframe></div></textarea></td>
   </tr>
 </table>
-
-
-
 </body>
 </html>
