@@ -20,13 +20,13 @@ $result = mktime($hour, $minute, 0, $month, $day, $year);
 
 <table width="650" border="0">
   <tr>
-    <td>El evento se realizará el: <iframe frameborder="0" height="55" width="400" src="<?php echo 'http://jmandrade.com/evento/fecha.php?q='.$result; ?>">Tu navegador no soporta para iframes</iframe> <p>&nbsp;</p></td>
+    <td>El evento se realizará el: <iframe frameborder="0" height="55" width="400" src="<?php echo 'http://ext.weblogsinc.com/engadget/es/fecha.php?q='.$result; ?>">Tu navegador no soporta para iframes</iframe> <p>&nbsp;</p></td>
   </tr>
   <tr>
     <td>Copiar y pegar el código de abajo en la <strong>fuente</strong> del artículo.</td>
   </tr>
   <tr>
-    <td><textarea name="resultado" cols="80" rows="3" readonly="readonly"><div style="text-align: center;"><iframe frameborder="0" height="55" width="400" src="<?php echo 'http://jmandrade.com/evento/fecha.php?q='.$result; ?>">Tu navegador no soporta iframes</iframe></div></textarea></td>
+    <td><textarea name="resultado" cols="80" rows="3" readonly="readonly"><div style="text-align: center;"><iframe frameborder="0" height="55" width="400" src="<?php echo 'http://ext.weblogsinc.com/engadget/es/fecha.php?q='.$result; ?>">Tu navegador no soporta iframes</iframe></div></textarea></td>
   </tr>
 </table>
 
