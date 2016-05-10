@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<form action="resultado2.php" method="post" name="horas">
+<form action="resultado.php" method="post" name="horas">
 <table width="561" border="0">
   <tr>
     <td colspan="4"><p>Seleccionar fecha y hora en la que se efectuará el evento.</p>
