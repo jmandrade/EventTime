@@ -1,0 +1,35 @@
+FROM centos:7
+MAINTAINER Jose Andrade <jandrade@gmail.com>
+EXPOSE 80
+
+# This Dockerfile is mainly used for development. Please use docker/Dockerfile for production
+
+# Install dependencies
+RUN yum update -y && \
+    yum install -y epel-release && \
+    rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && \
+    yum install -y httpd php70w php70w-mcrypt php70w-mysql php70w-mbstring php70w-xml php70w-ldap php70w-cli mysql supervisor && \
+    yum -y clean all
+
+# set Apache environment variables
+ENV APACHE_LOG_DIR /var/log/httpd
+ENV APACHE_DOC_ROOT /var/www/html
+
+# forward logs to docker log collector
+RUN ln -sf /dev/stdout ${APACHE_LOG_DIR}/access.log && \
+    ln -sf /dev/stderr ${APACHE_LOG_DIR}/error.log
+
+# Install laravel app
+COPY . /var/www/html/
+WORKDIR /var/www/html
+
+# change user
+RUN chown -R apache /var/www/html
+
+# Configure apache and laravel queue on supervisor
+ADD docker/supervisord.conf /etc/supervisord.conf
+ADD docker/httpd.ini /etc/supervisord.d/httpd.ini
+ADD docker/apache.conf /etc/httpd/conf.d/apache.conf
+
+# Start supervisor
+CMD /usr/bin/supervisord -c /etc/supervisord.conf
