@@ -8,7 +8,7 @@ index.php and resultado.php create the event, while fecha.php displays the event
 
 Create container
 ```
-docker build -t goui . -f docker/Dockerfile.local
+docker build -t event . -f docker/Dockerfile.local
 ```
 
 Start container
